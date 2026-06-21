@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+        }
+
+        .container {
+            width: 420px;
+            margin: 60px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 5px;
+        }
+
+        p {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #3b82f6;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #dbeafe;
+            border-radius: 12px;
+            text-align: center;
+            color: #1e3a8a;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🏠 House Price Predictor</h1>
+    <p>Enter house details below</p>
+
+    <form action="/predict" method="post">
+
+        <input name="lotarea" placeholder="Lot Area" required>
+        <input name="yearbuilt" placeholder="Year Built" required>
+        <input name="overallcond" placeholder="Overall Condition (1-10)" required>
+        <input name="totalbsmt" placeholder="Basement Area" required>
+        <input name="yearremod" placeholder="Year Remodeled" required>
+
+        <button type="submit">Predict Price</button>
+
+    </form>
+
+    {% if prediction %}
+        <div class="result">
+            Predicted Price: ₹ {{ prediction }}
+        </div>
+    {% endif %}
+
+</div>
+
+</body>
+</html>
